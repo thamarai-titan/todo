@@ -1,33 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Todo</title>
-</head>
-<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js"></script>
+  </head>
+  <script>
+    async function signup() {
+      const username = document.getElementById("sign-up-name").value;
+      const password = document.getElementById("sign-up-password").value;
+
+      await axios.post("http://localhost:3000/signup", {
+          username: username,
+          password: password
+      })
     
+    alert("You are signed in");
+    }
+  </script>
+  <body>
+
     <div class="container">
-        <div class="signup">
+      <div class="signup">
+        <h4>SIGN-UP</h4>
+        <label for="username">Username :</label>
+        <input type="text" placeholder="username" id="sign-up-name" />
+        <label for="password">Password :</label>
+        <input type="password" placeholder="password" id="sign-up-password" />
 
-            <h4>SIGN-UP</h4>
-            <label for="username">Username :</label>
-            <input type="text" placeholder="username">
-            <label for="password">Password :</label>
-             <input type="password" placeholder="password">
+        <button onclick="signup()">sign-up</button>
+      </div>
+      <div class="signin">
+        <h4>SIGN-IN</h4>
+        <label for="username">Username :</label>
+        <input type="text" placeholder="username" id="sign-in-name" />
+        <label for="password">Password :</label>
+        <input type="password" placeholder="password" id="sign-in-password" />
 
-             <button>sign-up</button>
-        </div>
-        <div class="signin">
-
-            <h4>SIGN-IN</h4>
-            <label for="username">Username :</label>
-            <input type="text" placeholder="username">
-            <label for="password">Password :</label>
-             <input type="password" placeholder="password">
-
-             <button>sign-in</button>
-        </div>
+        <button>sign-in</button>
+      </div>
     </div>
-</body>
+   
+  </body>
 </html>
