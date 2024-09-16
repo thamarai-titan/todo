@@ -16,7 +16,9 @@ app.post('/signup', (req, res)=>{
     })
 })
 app.post('/signin', (req, res)=>{
-    
+    res.json({
+        message: "the sign-in page was working"
+    })
 })
 app.listen(port, ()=>{
     console.log("server running on the port ",port);
