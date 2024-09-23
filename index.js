@@ -1,25 +1,18 @@
+require("dotenv").config();
 const express = require("express");
-const awt = require("jsonwebtoken");
-
+const mongoose = require("mongoose");
 const app = express();
-const port = 3000;
 
-app.use(express.json())
 
-app.get('/',(req, res)=>{
-    res.sendFile(__dirname + '/public/Login.html')
-})
+async function main(){
+    await mongoose.connect(process.env.Mongo_db_Url);   
+}
+main()
+const { userRouter } = require('./router/user')
+app.use(express.json());
 
-app.post('/signup', (req, res)=>{
-    res.json({
-        message: "the signup page was working"
-    })
-})
-app.post('/signin', (req, res)=>{
-    res.json({
-        message: "the sign-in page was working"
-    })
-})
-app.listen(port, ()=>{
-    console.log("server running on the port ",port);
-})
+app.use('/user', userRouter)
+
+app.listen(3000 , ()=>{
+    console.log(process.env.Mongo_db_Url)
+});
