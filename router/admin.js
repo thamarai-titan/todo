@@ -1,18 +1,21 @@
-const {Router} = require('express');
+const { Router } = require("express");
 const adminRouter = Router();
 
-const {adminModule} = require('../db');
+const { adminModule } = require("../db");
 
+adminRouter.post("/signup", async (req, res) => {
+  const { email, password, firstName, lastName } = req.body;
 
-adminRouter.post('signup', async (req, res)=>{
-    const {email, password, firstName, lastName} = req.body;
+  await adminModule.create({
+    email: email,
+    password: password,
+    firstName: firstName,
+    lastName: lastName,
+  });
 
-    await adminModel.create({
-        email:email,
-        password:password,
-        firstName:firstName,
-        lastName:lastName
-    });
+  res.send("the admin details are added to the table");
+});
 
-    res.send("the admin details are added to the table");
-})
+module.exports = {
+  adminRouter: adminRouter,
+};

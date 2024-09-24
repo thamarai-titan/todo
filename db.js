@@ -15,12 +15,21 @@ const adminSchema = new Schema({
   password: String,
   firstName: String,
   lastName: String,
-})
+});
+
+const todoSchema = new Schema({
+  email: String,
+  title: String,
+  todo: String,
+  done: Boolean,
+});
 
 const userModule = mongoose.model("user", userSchema);
 const adminModule = mongoose.model("admin", adminSchema);
+const todoModule = mongoose.model("todo", todoSchema);
 
 module.exports = {
-    userModule,
-    adminModule    
-}
+  userModule,
+  adminModule,
+  todoModule
+};
