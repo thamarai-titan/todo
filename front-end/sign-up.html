@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js"></script>
+    <title>Sign-up</title>
+  </head>
+  
+  <body>
+    <script>
+        async function signUp() {
+    
+            console.log("haii")
+          const firstName = document.getElementById("FirstName").value;
+          const lastName = document.getElementById("lastName").value;
+          const email = document.getElementById("email").value;
+          const password = document.getElementById("password").value;
+    
+          const reponse = await axios.post("http://localhost:3000/user/signup", {
+            email: email,
+            password: password,
+            firstName: firstName,
+            lastName: lastName,
+          })
+          alert("Signed up successfully");
+        }
+      </script>
+    <div class="container flex justify-center items-center">
+      <div class="sign-up-card w-full max-w-xs content-center">
+        <form action="sign-up.html" class="bg-white rounded shadow-lg mt-10 px-8 pt-6 pb-8">
+          <div class="mb-4">
+            <label for="text" class="block text-gray-700 text-lg font-bold mb-3"
+              >FirstName</label
+            >
+            <input
+              type="text"
+              placeholder="FirstName"
+              class="rounded shadow appearance-none w-full py-2 px-2 mb-3 text-gray-700"
+              id="FirstName"
+            />
+          </div>
+          <div>
+            <label for="text" class="block text-gray-700 text-lg font-bold mb-3"
+              >LastName</label
+            >
+            <input
+              type="text"
+              placeholder="LastName"
+              class="rounded shadow appearance-none w-full py-2 px-2 mb-3 text-gray-700"
+              id="lastName"
+            />
+          </div>
+          <div>
+            <label for="text" class="block text-gray-700 text-lg font-bold mb-3"
+              >Email</label
+            >
+            <input
+              type="text"
+              placeholder="Email"
+              class="rounded shadow appearance-none w-full py-2 px-2 mb-3 text-gray-700"
+              id="email"
+            />
+          </div>
+          <div>
+            <label for="text" class="block text-gray-700 text-lg font-bold mb-3"
+              >Password</label
+            >
+            <input
+              type="text"
+              placeholder="Password"
+              class="rounded shadow appearance-none w-full py-2 px-2 mb-5 text-gray-700"
+              id="password"
+            />
+          </div>
+          <div>
+            <button
+              onclick="signUp()"
+              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            >
+              Sign-Up
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
